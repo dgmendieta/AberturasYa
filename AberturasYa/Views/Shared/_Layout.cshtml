@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Aberturas Ya!!</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <!-- *** NavBar Start *** -->
+    @Html.Partial("_NavBar")
+    <!-- *** NavBar End *** -->
+    <!-- *** Carrousel Start *** -->
+    @Html.Partial("_Carrousel")
+    <!-- *** Carrousel End *** -->
+    @RenderBody()
+    
+    @Html.Partial("_Footer")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="https://kit.fontawesome.com/20253651d1.js" crossorigin="anonymous"></script>
+</body>
+</html>

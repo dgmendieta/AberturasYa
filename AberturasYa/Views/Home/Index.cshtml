@@ -1,0 +1,150 @@
+﻿@model AberturasYa.ViewModels.ProductCategoriesImagesViewModel
+@{
+    ViewBag.Title = "Inicio";
+}
+
+<!-- PRESENTATION START-->
+<div class="row presentation">
+    <div class="col-md-6">
+        <div class="presentation_box">
+            <h1 class="presentation_title">
+                Aberturas en Aluminio de 
+                <span class="red_color">destacada calidad.</span><br>
+                Su abertura lista en 
+                <span class="red_color">tiempo récord.</span>
+            </h1>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <img class="presentation_image" src="~/Content/Images/Ventana.jpg" width="400" height="400">
+    </div>
+</div>
+<!-- PRESENTATION END -->
+<!-- WEB OFFERS START -->
+<div class="container">
+    <hr />
+    <h3 class="h3 text-center presentation_title">Ofertas Web</h3>
+    <hr /> 
+    <div class="row">
+        @foreach (var product in Model.Products)
+        {
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid4">
+                    <div class="product-image4">
+                        <a href="#">
+                            @{int count = 1;
+                                foreach (var image in Model.Images)
+                                {
+                                    if (count <= 2)
+                                    {
+                                        if (image.ProductId == product.ProductId)
+                                        {
+                                            <img class="pic-@count" src="@image.Url" width="255" height="326">
+                                            count++;
+                                        }
+                                        if (image.ProductId == null || image.ProductId == 0)
+                                        {
+                                            <img class="pic-@count" src="~/Content/Images/Icono.png" width="255" height="326">
+                                            count++;
+                                        }
+
+                                    }
+                                }
+                            }
+                        </a>
+                        <ul class="social">
+                            <li><a href="#" data-tip="Ver Detalles"><i class="fa fa-eye"></i></a></li>
+                            <li><a href="#" data-tip="Agregar al Carrito"><i class="fa fa-cart-plus"></i></a></li>
+                        </ul>
+                        <span class="product-new-label">Web</span>
+                        <span class="product-discount-label">- @product.Discount %</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="#">@product.Name</a></h3>
+                        <div class="price">
+                            $ @product.Price
+                            <span>$ @product.Price</span>
+                        </div>
+                        <a class="add-to-cart" href="">Agregar al Carrito</a>
+                    </div>
+                </div>
+            </div>
+         }
+    </div>
+</div>
+<!-- WEB OFFERS END -->
+<!-- CATEGORIES START -->
+<div class="container mt-40">
+    <h3 class="text-center presentation_title">Categorías de Productos</h3>
+    <hr />
+    <div class="row mt-30">
+        @{ foreach (var c in Model.Categories)
+           {
+               <div class="col-md-4 col-sm-6">
+                    <div class="box14">
+                            @foreach (var i in Model.Images)
+                            {
+                                if (c.CategoryId == i.CategoryId)
+                                {
+                                    <img src="@i.Url" alt="@i.Name" width="640" height="360">
+                                }
+                            }
+                        <div class="box-content">
+                            <h3 class="title"></h3>
+                            <span class="post">@c.Name</span>
+                            <ul class="icon">
+                                <li><a href="#"><i class="fa fa-eye"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+           }
+        }
+    </div>
+</div>
+<!-- CATEGORIES END -->
+<!-- INFO SECTION START -->
+<div class="row presentation">
+    <div class="col-md-6">
+        <iframe class="contact_image" src="https://www.google.com/maps/d/embed?mid=19YdaAGw2Y5Lejosq2EauXQsdm4UtxHp8&hl=es" 
+                    width="600" height="380"></iframe>
+    </div>
+    <div class="col-md-6">
+        <div class="contact_box">
+            <ul class="list-unstyled">
+                <li>
+                    <h4><i class="fas fa-home" size="5x"></i>   Dirección</h4>
+                    <p class="red_color contact_text">
+                        Bvar José Batlle y Ordoñez (Propios) 2350 esq.
+                        Mateo Cabral - Buceo - Montevideo
+                    </p>
+                    <hr class="display_hr" />
+                </li>
+                <li>
+                    <h4><i class="fas fa-envelope" size="5x"></i>   Correo Electrónico</h4>
+                    <p class="contact_text"><a href="mailto:ventas.aberturasya@gmail.com">
+                                                        ventas.aberturasya@gmail.com</a></p>
+                    <hr class="display_hr" />
+                </li>
+                <li>
+                    <h4><i class="fas fa-phone-alt" size="5x"></i>    Teléfono</h4>
+                    <p class="contact_text"><a href="tel:+59825092222"> 2509 22 22</a></p>
+                    <hr class="display_hr" />
+
+                </li>
+                <li>
+                    <h4><i class="fas fa-mobile-alt" size="5x"></i>    Celular</h4>
+                    <p class="contact_text"><a href="tel:+59895514990"> 095 514 990</a></p>
+                    <hr class="display_hr" />
+                </li>
+                <li>
+                    <h4><i class="fab fa-whatsapp" size="5x"></i>    Whatsapp</h4>
+                    <p class="contact_text"><a href="https://wa.me/598995514990"> 095 514 990</a></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- INFO SECTION END-->
+
+
